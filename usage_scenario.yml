@@ -1,0 +1,45 @@
+---
+name: Simple Stress Test-Scenario
+author: Max Weber
+version: 1
+description: Defined test scenario for automatically testing software with Green Metrics Tool .
+
+services:
+  Stress_Container:
+    image: polinux/stress-ng
+    ports:
+      - 9000:80
+    setup-commands:
+      - command: whoami
+
+flow:
+  - name: test0
+    container: Stress_Container
+    commands:
+      - type: console
+        command: stress-ng --cpu 0 --timeout 15s
+        note: Running StressNG with all CPU 15s
+  - name: test2
+    container: Stress_Container
+    commands:
+      - type: console
+        command: stress-ng --cpu 0 --vm 2 --timeout 15s
+        note: Running StressNG with all CPU 15s
+  - name: test3
+    container: Stress_Container
+    commands:
+      - type: console
+        command: stress-ng --cpu 0 --hdd 1 --timeout 15s
+        note: Running StressNG with all CPU 15s
+  - name: test4
+    container: Stress_Container
+    commands:
+      - type: console
+        command: stress-ng --cpu 0 --vm 2 --hdd 1 --timeout 15s
+        note: Running StressNG with all CPU 15s
+  - name: test5
+    container: Stress_Container
+    commands:
+      - type: console
+        command: stress-ng --cpu 0 --iomix 4 --timeout 15s
+        note: Running StressNG with all CPU 15s
