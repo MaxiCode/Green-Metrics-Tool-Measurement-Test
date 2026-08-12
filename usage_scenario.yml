@@ -9,6 +9,7 @@ services:
     image: polinux/stress-ng
     ports:
       - 9000:80
+    command: sh
     setup-commands:
       - command: whoami
 
