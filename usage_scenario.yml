@@ -40,10 +40,4 @@ flow:
         shell: sh
         command: stress-ng --cpu 0 --vm 2 --hdd 1 --timeout 15s --quiet
         note: Running StressNG with all CPU 15s VM 2 HDD 1
-  - name: test5
-    container: Stress_Container
-    commands:
-      - type: console
-        shell: sh
-        command: stress-ng --cpu 0 --iomix 4 --timeout 15s --quiet
-        note: Running StressNG with all CPU 15s IOMIX 4
+
