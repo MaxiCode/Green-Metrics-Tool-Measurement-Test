@@ -19,60 +19,31 @@ flow:
     container: Stress_Container
     commands:
       - type: console
-        shell: sh
-        command: |
-          stress-ng --cpu 0 --timeout 15s > /tmp/stress-test1.log 2> /tmp/stress-test1.err
-          rc=$?
-          grep 'stress-ng: info:' /tmp/stress-test1.err >> /tmp/stress-test1.log
-          cat /tmp/stress-test1.log
-          grep -v 'stress-ng: info:' /tmp/stress-test1.err 1>&2
-          exit $rc
+        command: stress-ng --cpu 0 --timeout 15s --quiet
         note: Running StressNG with all CPU 15s
   - name: test2
     container: Stress_Container
     commands:
       - type: console
-        shell: sh
-        command: stress-ng --cpu 0 --vm 2 --timeout 15s > /tmp/stress-test2.log 2> /tmp/stress-test2.err
-          rc=$?
-          grep 'stress-ng: info:' /tmp/stress-test2.err >> /tmp/stress-test2.log
-          cat /tmp/stress-test2.log
-          grep -v 'stress-ng: info:' /tmp/stress-test2.err 1>&2
-          exit $rc
+        command: stress-ng --cpu 0 --vm 2 --timeout 15s --quiet
         note: Running StressNG with all CPU 15s VM2
   - name: test3
     container: Stress_Container
     commands:
       - type: console
-        shell: sh
-        command: stress-ng --cpu 0 --hdd 1 --timeout 15s > /tmp/stress-test3.log 2> /tmp/stress-test3.err
-          rc=$?
-          grep 'stress-ng: info:' /tmp/stress-test3.err >> /tmp/stress-test3.log
-          cat /tmp/stress-test3.log
-          grep -v 'stress-ng: info:' /tmp/stress-test3.err 1>&2
-          exit $rc
+        command: stress-ng --cpu 0 --hdd 1 --timeout 15s --quiet
         note: Running StressNG with all CPU 15s HDD 1
   - name: test4
     container: Stress_Container
     commands:
       - type: console
         shell: sh
-        command: stress-ng --cpu 0 --vm 2 --hdd 1 --timeout 15s > /tmp/stress-test4.log 2> /tmp/stress-test4.err
-          rc=$?
-          grep 'stress-ng: info:' /tmp/stress-test4.err >> /tmp/stress-test4.log
-          cat /tmp/stress-test4.log
-          grep -v 'stress-ng: info:' /tmp/stress-test4.err 1>&2
-          exit $rc
+        command: stress-ng --cpu 0 --vm 2 --hdd 1 --timeout 15s --quiet
         note: Running StressNG with all CPU 15s VM 2 HDD 1
   - name: test5
     container: Stress_Container
     commands:
       - type: console
         shell: sh
-        command: stress-ng --cpu 0 --iomix 4 --timeout 15s > /tmp/stress-test5.log 2> /tmp/stress-test5.err
-          rc=$?
-          grep 'stress-ng: info:' /tmp/stress-test5.err >> /tmp/stress-test5.log
-          cat /tmp/stress-test5.log
-          grep -v 'stress-ng: info:' /tmp/stress-test5.err 1>&2
-          exit $rc
+        command: stress-ng --cpu 0 --iomix 4 --timeout 15s --quiet
         note: Running StressNG with all CPU 15s IOMIX 4
